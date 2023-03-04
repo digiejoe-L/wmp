@@ -1,7 +1,7 @@
 package com.wmp.component;
 
+import com.wmp.exception.CommonException;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +11,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 class CrawlingComponentTest {
@@ -19,14 +22,17 @@ class CrawlingComponentTest {
     private CrawlingComponent crawlingComponent;
 
     @Test
-    @DisplayName("URL HTML CONTENT 내용 테스트")
-    public void getUrlContent() throws IOException {
+    @DisplayName("HTML 내용 획득 성공")
+    public void successGetUrlContent() {
         String urlContent = crawlingComponent.getUrlContent("https://www.naver.com/");
-//        log.debug(urlContent);
+        assertNotNull(urlContent);
+    }
 
-        Safelist whitelist = Safelist.none();
-        String cleanStr = Jsoup.clean(urlContent, whitelist);
-        log.debug(cleanStr);
+    @Test
+    @DisplayName("HTML 내용 획득 실패")
+    public void failGetUrlContent() {
+        CommonException commonException = assertThrows(CommonException.class,()->crawlingComponent.getUrlContent("https://111eeqwewqe.com/"));
+        assertEquals(commonException.getMessage(),"URL에 문제가 있습니다.");
     }
 
 }

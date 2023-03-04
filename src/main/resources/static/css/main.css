@@ -1,0 +1,43 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#pagewidth {
+    width: 50%;
+    text-align: left;
+    margin: 0 auto;
+}
+
+#maincol {
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+
+.parameter{
+    width: 50px;
+}
+
+

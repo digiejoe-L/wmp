@@ -1,12 +1,19 @@
 package com.wmp.controller.responsemodel;
 
+import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
+@Builder
 public class ContentRm {
 
-    private List<String> quotient;
+    /**
+     * 몫
+     */
+    private String quotient;
+
+    /**
+     * 나머지
+     */
     private String remainder;
 }

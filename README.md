@@ -1,3 +1,6 @@
+# 지원자
+- 이동은
+
 # 스택
 - Spring boot
 - thymeleaf
